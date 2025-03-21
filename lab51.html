@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device-width, initial - scale=1.0">
+    <title>Balloon Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #87CEEB;
+        }
+
+      .balloon {
+            position: absolute;
+            border-radius: 50%;
+            animation: fly 10s linear infinite;
+        }
+
+        @keyframes fly {
+            0% {
+                bottom: -100px;
+            }
+            100% {
+                bottom: 100vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const numBalloons = 10;
+        const container = document.body;
+
+        for (let i = 0; i < numBalloons; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+
+            // Set initial size
+            let size = Math.random() * 50 + 50;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+
+            // Set initial color
+            let color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            balloon.style.backgroundColor = color;
+
+            // Set initial position
+            balloon.style.left = `${Math.random() * window.innerWidth}px`;
+
+            container.appendChild(balloon);
+
+            // Animate size and color change
+            setInterval(() => {
+                size = Math.random() * 50 + 50;
+                balloon.style.width = `${size}px`;
+                balloon.style.height = `${size}px`;
+
+                color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                balloon.style.backgroundColor = color;
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
